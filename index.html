@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-wallet"></i>
+                <h1>Finance Manager</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-exchange-alt"></i> Transactions</a></li>
+                    <li><a href="#"><i class="fas fa-chart-pie"></i> Budget</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Investments</a></li>
+                    <li><a href="#"><i class="fas fa-bullseye"></i> Goals</a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <img src="https://via.placeholder.com/40" alt="User">
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Summary Cards -->
+            <section class="summary-cards">
+                <div class="card balance-card">
+                    <h3>Total Balance</h3>
+                    <p class="amount">$12,345.67</p>
+                    <p class="change"><i class="fas fa-arrow-up"></i> 2.5% from last month</p>
+                </div>
+                <div class="card income-card">
+                    <h3>Income</h3>
+                    <p class="amount">$4,500.00</p>
+                    <p class="change"><i class="fas fa-arrow-up"></i> 10% from last month</p>
+                </div>
+                <div class="card expense-card">
+                    <h3>Expenses</h3>
+                    <p class="amount">$3,200.50</p>
+                    <p class="change"><i class="fas fa-arrow-down"></i> 5% from last month</p>
+                </div>
+                <div class="card savings-card">
+                    <h3>Savings</h3>
+                    <p class="amount">$1,300.17</p>
+                    <p class="change"><i class="fas fa-arrow-up"></i> 15% from last month</p>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="spending-chart card">
+                    <h3>Monthly Spending</h3>
+                    <canvas id="spendingChart"></canvas>
+                </div>
+                <div class="budget-chart card">
+                    <h3>Budget Overview</h3>
+                    <canvas id="budgetChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Recent Transactions -->
+            <section class="transactions-section">
+                <div class="card">
+                    <div class="transactions-header">
+                        <h3>Recent Transactions</h3>
+                        <button class="btn-add"><i class="fas fa-plus"></i> Add Transaction</button>
+                    </div>
+                    <table class="transactions-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactions-list">
+                            <!-- Transactions will be added here by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add Transaction Modal -->
+    <div class="modal" id="transactionModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Add New Transaction</h2>
+            <form id="transactionForm">
+                <div class="form-group">
+                    <label for="transactionType">Type</label>
+                    <select id="transactionType" required>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="transactionAmount">Amount</label>
+                    <input type="number" id="transactionAmount" placeholder="0.00" required>
+                </div>
+                <div class="form-group">
+                    <label for="transactionCategory">Category</label>
+                    <select id="transactionCategory" required>
+                        <option value="salary">Salary</option>
+                        <option value="food">Food</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="housing">Housing</option>
+                        <option value="entertainment">Entertainment</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="transactionDate">Date</label>
+                    <input type="date" id="transactionDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="transactionDescription">Description</label>
+                    <input type="text" id="transactionDescription" placeholder="Optional description">
+                </div>
+                <button type="submit" class="btn-submit">Add Transaction</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
